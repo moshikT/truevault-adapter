@@ -43,7 +43,7 @@ exports.getDocumentById = function (documentId) {
 /**
  * Return an object of documents corresponding to documentIdsArray
  *
- * @param documentIdsArray (aka @personalDataId field in candidate document)
+ * @param documentIdsArray
  * @returns {Promise}
  */
 exports.getDocumentsByIds = function (documentIdsArray) {
@@ -134,17 +134,17 @@ exports.getDocumentsByIds = function (documentIdsArray) {
 };
 
 /**
- * Middleware for deciding if insert new candidate or update existing one according to input params
+ * Middleware for deciding if insert new document or update existing one according to input params
  *
- * @param candidateData
- * @param documentId -> OPTIONAL: defaults behavior - insert new candidate.
- * If @documentId specified updated corresponding document with input @candidateData
+ * @param documentData
+ * @param documentId -> OPTIONAL: defaults behavior - insert new document.
+ * If @documentId specified updated corresponding document with input @documentData
  * @returns {Promise} - updated/inserted document's Id
  */
-exports.saveCandidate = function (candidateData, documentId) {
+exports.saveDocument = function (documentData, documentId) {
     return new Promise(function (resolve, reject) {
         if(!documentId) {
-            insertDocument(candidateData, undefined, 'POST', collectionSchemaId)
+            insertDocument(documentData, undefined, 'POST', collectionSchemaId)
                 .then(documentId => {
                     resolve(documentId);
                 })
@@ -153,7 +153,7 @@ exports.saveCandidate = function (candidateData, documentId) {
                 });
         }
         else {
-            insertDocument(candidateData, documentId, 'PUT', collectionSchemaId)
+            insertDocument(documentData, documentId, 'PUT', collectionSchemaId)
                 .then(documentId => {
                     resolve(documentId);
                 })
