@@ -4,8 +4,9 @@ TrueVault controller/adapter for handling request to trueVault api.
 
  * Includes support for session store implementation
 
-Example:
+## Example:
 
+```
 const TrueVault = require('truevault-adapter');
 
 // Get a list of documents
@@ -52,3 +53,4 @@ TrueVault.getUser(accessToken)
             .catch (error => {
                 console.log(error);
             })
+```
