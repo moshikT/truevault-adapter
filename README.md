@@ -6,7 +6,7 @@ TrueVault controller/adapter for handling request to trueVault api.
 
 ## Example:
 
-```
+```javascript
 const TrueVault = require('truevault-adapter');
 
 // Get a list of documents
