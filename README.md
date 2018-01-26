@@ -7,10 +7,21 @@ TrueVault controller/adapter for handling request to trueVault api.
 ## Example:
 
 ```javascript
-const TrueVault = require('truevault-adapter');
+const TrueVault = require('truevault-adapter')();
+
+// initialize params
+const params = {
+    apiKey: "<API_KEY>", // base64 encoded
+    vaultId: '<VAULT_ID>',
+    collectionSchemaId: "<COLLECTION_SCHEMA_ID>",
+    sessionSchemaId: "<SESSION_COLLECTION_SCHEMA_ID>" // Optional
+};
+
+const truevault  = new TrueVault(params);
+
 
 // Get a list of documents
-TrueVault.getDocumentsByIds(arrayOfDocumentsIds)
+truevault.getDocumentsByIds(arrayOfDocumentsIds)
             .then(documents => {
                 console.log(documents);
             })
@@ -19,7 +30,7 @@ TrueVault.getDocumentsByIds(arrayOfDocumentsIds)
             })
 
 // Read document
-TrueVault.getDocumentById(documentId)
+truevault.getDocumentById(documentId)
             .then(documentData => {
                 console.log(documentData);
             })
@@ -28,7 +39,7 @@ TrueVault.getDocumentById(documentId)
             })
 
 // Creates new document
-TrueVault.saveDocument(documentData)
+truevault.saveDocument(documentData)
             .then(documentId => {
                 console.log(documentId);
             })
@@ -37,7 +48,7 @@ TrueVault.saveDocument(documentData)
             })
 
 // Updates existing document
-TrueVault.saveDocument(documentData, documentId)
+truevault.saveDocument(documentData, documentId)
             .then(documentId => {
                 console.log(documentId);
             })
@@ -46,7 +57,7 @@ TrueVault.saveDocument(documentData, documentId)
             })
 
 // Get user data
-TrueVault.getUser(accessToken)
+truevault.getUser(accessToken)
             .then(documentId => {
                 console.log(userData);
             })
