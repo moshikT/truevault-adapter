@@ -58,7 +58,7 @@ truevault.saveDocument(documentData, documentId)
 
 // Get user data
 truevault.getUser(accessToken)
-            .then(documentId => {
+            .then(userData => {
                 console.log(userData);
             })
             .catch (error => {
